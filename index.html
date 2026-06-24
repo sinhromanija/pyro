@@ -20,6 +20,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -65,7 +66,7 @@
             color: var(--pyro-orange);
         }
 
-        /* Hero / Glavni Baner sa novom, uklopljenom pozadinom zlatnog vatrometa */
+        /* Hero / Glavni Baner sa uklopljenom pozadinom zlatnog vatrometa */
         .hero {
             position: relative;
             height: 65vh;
@@ -234,7 +235,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Sakrivanje elemenata koji nisu selektovani filterom */
         .product-item.hidden {
             display: none;
         }
@@ -296,12 +296,74 @@
             color: var(--pyro-orange);
         }
 
+        /* Sekcija Kontakt */
+        .contact-section {
+            padding: 60px 10%;
+            text-align: center;
+            background-color: var(--pyro-dark-bg);
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--pyro-card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 81, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-text {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .contact-info-item {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        .contact-info-item span {
+            color: var(--pyro-orange);
+            font-weight: bold;
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .contact-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--pyro-orange);
+        }
+
+        .contact-badge {
+            display: inline-block;
+            background-color: rgba(255, 81, 0, 0.1);
+            color: var(--pyro-orange);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 81, 0, 0.3);
+        }
+
         /* Footer */
         footer {
             background-color: #0b0b0b;
             text-align: center;
             padding: 20px;
-            margin-top: 40px;
             border-top: 1px solid #222;
             font-size: 14px;
             color: var(--text-gray);
@@ -315,8 +377,7 @@
         <nav>
             <a href="#" onclick="filterCategory('all')">Početna</a>
             <a href="#proizvodi" onclick="filterCategory('all')">Prodavnica</a>
-            <a href="#">O nama</a>
-            <a href="#">Kontakt</a>
+            <a href="#kontakt">Kontakt</a>
         </nav>
     </header>
 
@@ -531,21 +592,41 @@
         </div>
     </section>
 
+    <section class="contact-section" id="kontakt">
+        <h2 class="section-title">Kontaktirajte Nas</h2>
+        <div class="contact-container">
+            <p class="contact-text">
+                Imate pitanja u vezi asortimana, specifikacija ili vam je potrebna stručna preporuka za vašu proslavu? 
+                Tu smo da vam pomognemo da izaberete savršenu pirotehniku i bezbedno organizujete vaš spektakl. 
+                Sva naša roba poseduje neophodne sertifikate i dozvole.
+            </p>
+            
+            <div class="contact-info-item">
+                <span>Broj telefona / WhatsApp</span>
+                <a href="tel:+381668181848" class="contact-link">+381 66 818 1848</a>
+            </div>
+
+            <div class="contact-info-item">
+                <span>E-mail adresa</span>
+                <a href="mailto:info@pyrodistribution.com" class="contact-link" style="font-size: 20px;">info@pyrodistribution.com</a>
+            </div>
+
+            <div class="contact-badge">Dostupni za pozive i poruke svakog dana</div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Pyro Distribution. Sva prava zadržana. Prodaja je dozvoljena isključivo punoletnim licima (18+).</p>
     </footer>
 
     <script>
-        // Funkcija za filtriranje artikala na stranici
         function filterCategory(category) {
             const items = document.querySelectorAll('.product-item');
             const buttons = document.querySelectorAll('.filter-btn');
             
-            // Promeni aktivno dugme
             buttons.forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + category).classList.add('active');
             
-            // Prikaži ili sakrij artikle na osnovu selekcije
             items.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
                     item.classList.remove('hidden');
@@ -555,17 +636,14 @@
             });
         }
 
-        // Funkcija koja se aktivira klikom na gornje kategorije (Asortiman)
         function navigateToCategory(category) {
             filterCategory(category);
-            // Glatko skrolovanje do sekcije sa proizvodima
             document.getElementById('proizvodi').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // WhatsApp naručivanje
+        // WhatsApp naručivanje sa tvojim brojem +381668181848
         function orderViaWhatsApp(productName, productPrice) {
-            // Unesi svoj broj umesto nula u formatu 3816XXXXXXXX
-            const myPhoneNumber = "381600000000"; 
+            const myPhoneNumber = "381668181848"; 
             
             const message = `Zdravo! Želim da poručim sledeći artikal sa Pyro Distribution sajta:\n\n` +
                             `📦 Proizvod: ${productName}\n` +
