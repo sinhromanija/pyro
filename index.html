@@ -73,7 +73,6 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Nova slika: Moćan zlatno-narandžasti vatromet na crnom nebu */
             background: linear-gradient(rgba(18, 18, 18, 0.5), rgba(18, 18, 18, 0.85)), url('hero-bg.jpg') center/cover no-repeat;
             padding: 0 20px;
         }
@@ -156,6 +155,7 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 81, 0, 0.1);
+            cursor: pointer;
         }
 
         .card:hover {
@@ -189,21 +189,39 @@
             text-transform: uppercase;
         }
 
-        .card .shop-link:hover {
-            text-decoration: underline;
-        }
-
         /* Stilovi za Sekciju Proizvoda sa Videom */
         .products-section {
             padding: 60px 10%;
             background-color: #161616;
         }
 
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background-color: #252525;
+            color: var(--text-light);
+            border: 1px solid #444;
+            padding: 8px 18px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--pyro-orange);
+            border-color: var(--pyro-orange);
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .product-item {
@@ -213,6 +231,12 @@
             border: 1px solid rgba(255, 81, 0, 0.1);
             display: flex;
             flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        /* Sakrivanje elemenata koji nisu selektovani filterom */
+        .product-item.hidden {
+            display: none;
         }
 
         .video-container {
@@ -286,99 +310,105 @@
 </head>
 <body>
 
-    <!-- Navigacioni Meni -->
     <header>
         <div class="logo">Pyro <span>Distribution</span></div>
         <nav>
-            <a href="#">Početna</a>
-            <a href="#">Prodavnica</a>
+            <a href="#" onclick="filterCategory('all')">Početna</a>
+            <a href="#proizvodi" onclick="filterCategory('all')">Prodavnica</a>
             <a href="#">O nama</a>
             <a href="#">Kontakt</a>
         </nav>
     </header>
 
-    <!-- Glavni Baner / Hero Sekcija sa novom usklađenom pozadinom -->
     <section class="hero">
         <div class="hero-content">
             <h1>Zapali Nebo Svojim Spektaklom</h1>
             <p>Najveći asortiman sertifikovanih boks vatrometa, petardi, vulkana i scenskih efekata na jednom mestu.</p>
-            <a href="#" class="pyro-btn">Pogledaj Ponudu</a>
+            <a href="#proizvodi" class="pyro-btn" onclick="filterCategory('all')">Pogledaj Ponudu</a>
         </div>
     </section>
 
-    <!-- Sekcija sa 8 sekcija pirotehnike -->
     <section class="categories-section">
         <h2 class="section-title">Naš Asortiman</h2>
         <div class="grid-container">
             
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('boks-vatrometi')">
                 <div class="card-icon">🎆</div>
                 <h3>Boks vatrometi</h3>
                 <p>Kompleti povezanih efekata koji se aktiviraju jednim paljenjem za maksimalan šou.</p>
-                <a href="#" class="shop-link">Svi boksevi →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('petarde')">
                 <div class="card-icon">🧨</div>
                 <h3>Petarde</h3>
                 <p>Klasični zvučni efekti različitih klasa i jačina za sve vrste proslava.</p>
-                <a href="#" class="shop-link">Pogledaj ponudu →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('vulkani')">
                 <div class="card-icon">🌋</div>
                 <h3>Vulkani</h3>
                 <p>Eruptivni stubovi gorućih srebrnih i zlatnih iskri koji stvaraju magiju na zemlji.</p>
-                <a href="#" class="shop-link">Svi vulkani →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('dimovi')">
                 <div class="card-icon">💨</div>
                 <h3>Dimovi</h3>
                 <p>Gusti dimni efekti u živopisnim bojama idealni za airsoft, stadione i fotografisanje.</p>
-                <a href="#" class="shop-link">Dimne bombe →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('baklje')">
                 <div class="card-icon">🚨</div>
                 <h3>Baklje</h3>
                 <p>Visokokvalitetne navijačke i signalne baklje jakog plamena otporne na vetar.</p>
-                <a href="#" class="shop-link">Sve baklje →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('rimske-svece')">
                 <div class="card-icon">🕯️</div>
                 <h3>Rimske sveće</h3>
                 <p>Tradicionalne cevi koje u pravilnim razmacima ispaljuju svetlosne zvezde visoko u vazduh.</p>
-                <a href="#" class="shop-link">Sve sveće →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('scenski-efekti')">
                 <div class="card-icon">✨</div>
                 <h3>Scenski efekti</h3>
                 <p>Profesionalne hladne fontane za prvi ples na venčanjima i unutrašnju pirotehniku.</p>
-                <a href="#" class="shop-link">Scenska oprema →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="navigateToCategory('dnevni-vatromet')">
                 <div class="card-icon">☀️</div>
                 <h3>Dnevni vatromet</h3>
                 <p>Specijalna pirotehnika u boji vidljiva po danu, savršena za dnevne proslave.</p>
-                <a href="#" class="shop-link">Dnevni efekti →</a>
+                <span class="shop-link">Pogledaj ponudu →</span>
             </div>
 
         </div>
     </section>
 
-    <!-- Sekcija: Izdvojeni Proizvodi sa Video Prezentacijama -->
-    <section class="products-section">
-        <h2 class="section-title" style="display: block; text-align: center;">Izdvojeni Proizvodi u Akciji</h2>
-        <p style="text-align: center; color: var(--text-gray); margin-bottom: 40px;">Pogledajte video prezentaciju svakog artikla pre kupovine.</p>
+    <section class="products-section" id="proizvodi">
+        <h2 class="section-title" style="display: block; text-align: center;">Katalog Proizvoda</h2>
         
-        <div class="products-grid">
+        <div class="filter-controls">
+            <button class="filter-btn active" onclick="filterCategory('all')" id="btn-all">Prikaži sve</button>
+            <button class="filter-btn" onclick="filterCategory('boks-vatrometi')" id="btn-boks-vatrometi">Boksevi</button>
+            <button class="filter-btn" onclick="filterCategory('petarde')" id="btn-petarde">Petarde</button>
+            <button class="filter-btn" onclick="filterCategory('vulkani')" id="btn-vulkani">Vulkani</button>
+            <button class="filter-btn" onclick="filterCategory('dimovi')" id="btn-dimovi">Dimovi</button>
+            <button class="filter-btn" onclick="filterCategory('baklje')" id="btn-baklje">Baklje</button>
+            <button class="filter-btn" onclick="filterCategory('rimske-svece')" id="btn-rimske-svece">Rimske Sveće</button>
+            <button class="filter-btn" onclick="filterCategory('scenski-efekti')" id="btn-scenski-efekti">Scenski Efekti</button>
+            <button class="filter-btn" onclick="filterCategory('dnevni-vatromet')" id="btn-dnevni-vatromet">Dnevni Vatromet</button>
+        </div>
+        
+        <div class="products-grid" id="products-container">
 
-            <!-- Proizvod 1 -->
-            <div class="product-item">
+            <div class="product-item" data-category="boks-vatrometi">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vatromet video" allowfullscreen></iframe>
                 </div>
@@ -393,10 +423,39 @@
                 </div>
             </div>
 
-            <!-- Proizvod 2 -->
-            <div class="product-item">
+            <div class="product-item" data-category="petarde">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Dimna bomba video" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Petarde video" allowfullscreen></iframe>
+                </div>
+                <div class="product-details">
+                    <span class="product-category-tag">Petarde</span>
+                    <h3>Petarde "Mega Shock" (20 kom)</h3>
+                    <p>Snažan zvučni udar sa jakim svetlosnim bljeskom pre same eksplozije. Klasa F2. Pakovanje od 20 komada.</p>
+                    <div class="product-meta">
+                        <span class="product-price">600 RSD</span>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Petarde Mega Shock 20kom', '600 RSD')">Poruči</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="vulkani">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vulkan video" allowfullscreen></iframe>
+                </div>
+                <div class="product-details">
+                    <span class="product-category-tag">Vulkani</span>
+                    <h3>Vulkan "Etna" - Srebrna Erupcija</h3>
+                    <p>Prelepa fontana koja stvara gorući stub od srebrnih iskri. Visina efekta do 3 metra. Trajanje: 50 sekundi.</p>
+                    <div class="product-meta">
+                        <span class="product-price">1.500 RSD</span>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Vulkan Etna Srebrna Erupcija', '1.500 RSD')">Poruči</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="dimovi">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Dim video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
                     <span class="product-category-tag">Dimovi</span>
@@ -409,8 +468,37 @@
                 </div>
             </div>
 
-            <!-- Proizvod 3 -->
-            <div class="product-item">
+            <div class="product-item" data-category="baklje">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Baklja video" allowfullscreen></iframe>
+                </div>
+                <div class="product-details">
+                    <span class="product-category-tag">Baklje</span>
+                    <h3>Navijačka Baklja "Pyro Torch"</h3>
+                    <p>Profesionalna signalna i navijačka baklja sa jakim i jarkim crvenim plamenom. Otporna na vetar. Trajanje: 60s.</p>
+                    <div class="product-meta">
+                        <span class="product-price">900 RSD</span>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Navijačka Baklja Pyro Torch Crvena', '900 RSD')">Poruči</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="rimske-svece">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rimska sveca video" allowfullscreen></iframe>
+                </div>
+                <div class="product-details">
+                    <span class="product-category-tag">Rimske Sveće</span>
+                    <h3>Rimska Sveća "Star Hunter"</h3>
+                    <p>Tradicionalna cev koja u pravilnim razmacima ispaljuje 8 svetlosnih projektila visoko u vazduh. Visina do 25m.</p>
+                    <div class="product-meta">
+                        <span class="product-price">450 RSD</span>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Rimska Sveća Star Hunter 8 pucnjeva', '450 RSD')">Poruči</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="scenski-efekti">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Hladna fontana video" allowfullscreen></iframe>
                 </div>
@@ -425,6 +513,21 @@
                 </div>
             </div>
 
+            <div class="product-item" data-category="dnevni-vatromet">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Dnevni vatromet video" allowfullscreen></iframe>
+                </div>
+                <div class="product-details">
+                    <span class="product-category-tag">Dnevni Vatromet</span>
+                    <h3>Dnevni Boks "Color Smoke Curtain"</h3>
+                    <p>Jedinstven boks sa 25 pucnjeva koji umesto varnica na dnevnom nebu pravi eksplozije gustog dima u raličitim bojama.</p>
+                    <div class="product-meta">
+                        <span class="product-price">3.900 RSD</span>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Dnevni Boks Color Smoke Curtain', '3.900 RSD')">Poruči</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -432,26 +535,45 @@
         <p>&copy; 2026 Pyro Distribution. Sva prava zadržana. Prodaja je dozvoljena isključivo punoletnim licima (18+).</p>
     </footer>
 
-    <!-- JAVASCRIPT ZA WHATSAPP INTEGRACIJU -->
     <script>
+        // Funkcija za filtriranje artikala na stranici
+        function filterCategory(category) {
+            const items = document.querySelectorAll('.product-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Promeni aktivno dugme
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + category).classList.add('active');
+            
+            // Prikaži ili sakrij artikle na osnovu selekcije
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // Funkcija koja se aktivira klikom na gornje kategorije (Asortiman)
+        function navigateToCategory(category) {
+            filterCategory(category);
+            // Glatko skrolovanje do sekcije sa proizvodima
+            document.getElementById('proizvodi').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // WhatsApp naručivanje
         function orderViaWhatsApp(productName, productPrice) {
-            // Unesi tvoj broj telefona sa pozivnim brojem (bez + i bez nula). 
-            // Primer za Srbiju: 3816XXXXXXXX
+            // Unesi svoj broj umesto nula u formatu 3816XXXXXXXX
             const myPhoneNumber = "381600000000"; 
             
-            // Tekst poruke koji će stići tebi na telefon
             const message = `Zdravo! Želim da poručim sledeći artikal sa Pyro Distribution sajta:\n\n` +
                             `📦 Proizvod: ${productName}\n` +
                             `💰 Cena: ${productPrice}\n\n` +
-                            `Molim Vas za informacije o plaćanju i preuzimanju.`;
+                            `Molim Vas za informacije o plaćanju i dostavi.`;
             
-            // Kodiranje teksta da bude ispravan za linkove
             const encodedMessage = encodeURIComponent(message);
-            
-            // Kreiranje konačnog WhatsApp linka
             const whatsAppUrl = `https://wa.me/${myPhoneNumber}?text=${encodedMessage}`;
-            
-            // Otvaranje WhatsApp-a u novom prozoru/tabu
             window.open(whatsAppUrl, '_blank');
         }
     </script>
