@@ -93,7 +93,7 @@
         /* Eksplozivan "Vatromet" Font */
         .logo-text {
             font-family: 'Impact', 'Arial Black', sans-serif; /* Snažan, oštar i agresivan font */
-            font-size: 28px;
+            font-size: 32px; /* Blago povećan tekst */
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -106,20 +106,22 @@
             transition: all 0.3s ease;
         }
 
-        /* Logo bez okvira prilagođen crnoj pozadini */
+        /* Istaknut i uvećan logo bez okvira prilagođen crnoj pozadini */
         .logo-img {
-            height: 70px;
-            width: 70px;
+            height: 85px; /* Povećana dimenzija */
+            width: 85px;  /* Povećana dimenzija */
             object-fit: contain;
             background-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 81, 0, 0.5)); /* Fin sjaj oko samog logotipa radi bolje uočljivosti */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: none;
+            border: none;
         }
 
         /* Efekat na hover za ceo desni deo */
         .logo-container:hover .logo-img {
-            transform: scale(1.08) rotate(360deg); /* Blaga rotacija kruga na hover */
-            box-shadow: none;
+            transform: scale(1.1) rotate(360deg); /* Blaga rotacija i dodatno povećanje na hover */
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
         }
 
         .logo-container:hover .logo-text {
@@ -257,12 +259,14 @@
             background-color: #161616;
         }
 
+        /* Vraćeno na stari raspored dugmića: prelamaju se normalno, nisu u jednom vodoravnom redu */
         .filter-controls {
             text-align: center;
             margin-bottom: 30px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
         .filter-btn {
@@ -270,7 +274,6 @@
             color: var(--text-light);
             border: 1px solid #444;
             padding: 8px 18px;
-            margin: 5px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
@@ -447,12 +450,12 @@
             }
 
             .logo-text {
-                font-size: 22px;
+                font-size: 24px; /* Optimalno prilagođen tekst mobilnom ekranu */
             }
 
             .logo-img {
-                height: 55px;
-                width: 55px;
+                height: 70px; /* Nešto veći i na mobilnom radi bolje uočljivosti */
+                width: 70px;
             }
 
             nav {
@@ -492,6 +495,16 @@
 
             .contact-link {
                 font-size: 18px;
+            }
+            
+            /* Osigurano da se kategorije prodavnice ređaju uredno u blokove a ne u stranu */
+            .filter-controls {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 8px 14px;
+                font-size: 13px;
             }
         }
     </style>
@@ -723,7 +736,7 @@
     </section>
 
     <section class="contact-section" id="kontakt">
-        <h2 class="section-title">Contactirajte Nas</h2>
+        <h2 class="section-title">Kontaktirajte Nas</h2>
         <div class="contact-container">
             <p class="contact-text">
                 Imate pitanja u vezi asortimana, specifikacija ili vam je potrebna stručna preporuka za vašu proslavu? 
