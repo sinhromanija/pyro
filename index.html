@@ -93,7 +93,7 @@
         /* Eksplozivan "Vatromet" Font */
         .logo-text {
             font-family: 'Impact', 'Arial Black', sans-serif; /* Snažan, oštar i agresivan font */
-            font-size: 32px; /* Blago povećan tekst */
+            font-size: 32px; 
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -106,13 +106,14 @@
             transition: all 0.3s ease;
         }
 
-        /* Istaknut i uvećan logo bez okvira prilagođen crnoj pozadini */
+        /* Rešen problem sa crnim logotipom - prebačen u belu boju i naglašen narandžastim sjajem */
         .logo-img {
-            height: 85px; /* Povećana dimenzija */
-            width: 85px;  /* Povećana dimenzija */
+            height: 85px; 
+            width: 85px;  
             object-fit: contain;
             background-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(255, 81, 0, 0.5)); /* Fin sjaj oko samog logotipa radi bolje uočljivosti */
+            /* Invertuje crnu grafiku u belu i dodaje vatreni narandžasti sjaj */
+            filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--pyro-orange)); 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: none;
             border: none;
@@ -120,13 +121,14 @@
 
         /* Efekat na hover za ceo desni deo */
         .logo-container:hover .logo-img {
-            transform: scale(1.1) rotate(360deg); /* Blaga rotacija i dodatno povećanje na hover */
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+            transform: scale(1.1) rotate(360deg); 
+            /* Na hover sjaj postaje još intenzivniji i belji */
+            filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(255, 255, 255, 1));
         }
 
         .logo-container:hover .logo-text {
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
-            letter-spacing: 3px; /* Tekst se blago širi kao eksplozija */
+            letter-spacing: 3px; 
         }
 
         /* Hero / Glavni Baner */
@@ -259,7 +261,6 @@
             background-color: #161616;
         }
 
-        /* Vraćeno na stari raspored dugmića: prelamaju se normalno, nisu u jednom vodoravnom redu */
         .filter-controls {
             text-align: center;
             margin-bottom: 30px;
@@ -439,7 +440,7 @@
         /* RESPONSIVE DIZAJN ZA TELEFONE */
         @media (max-width: 768px) {
             header {
-                flex-direction: column-reverse; /* Na mobilnom stavlja logo na vrh, linkove ispod */
+                flex-direction: column-reverse; 
                 gap: 15px;
                 padding: 15px 5%;
                 text-align: center;
@@ -450,12 +451,14 @@
             }
 
             .logo-text {
-                font-size: 24px; /* Optimalno prilagođen tekst mobilnom ekranu */
+                font-size: 24px; 
             }
 
             .logo-img {
-                height: 70px; /* Nešto veći i na mobilnom radi bolje uočljivosti */
+                height: 70px; 
                 width: 70px;
+                /* Zadržava se filter belog efekta i na telefonima */
+                filter: brightness(0) invert(1) drop-shadow(0 0 10px var(--pyro-orange));
             }
 
             nav {
@@ -497,7 +500,6 @@
                 font-size: 18px;
             }
             
-            /* Osigurano da se kategorije prodavnice ređaju uredno u blokove a ne u stranu */
             .filter-controls {
                 gap: 8px;
             }
