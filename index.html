@@ -29,10 +29,10 @@
             line-height: 1.6;
         }
 
-        /* Navigacija / Header */
+        /* Navigacija / Header sa Logotipom */
         header {
             background-color: rgba(18, 18, 18, 0.95);
-            padding: 20px 10%;
+            padding: 10px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,16 +42,28 @@
             border-bottom: 2px solid var(--pyro-orange);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-light);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: var(--pyro-orange);
+        .logo-img {
+            height: 60px; /* Optimalna visina za zaglavlje */
+            width: auto;
+            border-radius: 50%; /* Drži okrugli oblik slike */
+            object-fit: cover;
+            border: 2px solid var(--pyro-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
@@ -199,6 +211,9 @@
         .filter-controls {
             text-align: center;
             margin-bottom: 30px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
         }
 
         .filter-btn {
@@ -369,14 +384,20 @@
             color: var(--text-gray);
         }
 
-        /* RESPONSIVE DIZAJN ZA TELEFONE - OVO JE DODATO */
+        /* RESPONSIVE DIZAJN ZA TELEFONE */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 gap: 15px;
                 padding: 15px 5%;
+                text-align: center;
             }
             
+            nav {
+                justify-content: center;
+                width: 100%;
+            }
+
             nav a {
                 margin: 0 10px;
                 font-size: 15px;
@@ -388,7 +409,7 @@
             }
 
             .hero-content h1 {
-                font-size: 32px; /* Smanjen naslov za mobilne ekrane */
+                font-size: 32px;
                 letter-spacing: 1px;
             }
 
@@ -414,7 +435,9 @@
 <body>
 
     <header>
-        <div class="logo">Pyro <span>Distribution</span></div>
+        <a href="#" class="logo-container" onclick="filterCategory('all')">
+            <img src="1000356825.jpg" alt="Pyro Distribution Logo" class="logo-img">
+        </a>
         <nav>
             <a href="#" onclick="filterCategory('all')">Početna</a>
             <a href="#proizvodi" onclick="filterCategory('all')">Prodavnica</a>
@@ -512,7 +535,6 @@
 
             <div class="product-item" data-category="boks-vatrometi">
                 <div class="video-container">
-                    <!-- Zamenjen video sa testom boks vatrometa od 36 pucnjeva -->
                     <iframe src="https://www.youtube.com/embed/RyjaZlyj5-4" title="Vatromet video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
@@ -528,7 +550,6 @@
 
             <div class="product-item" data-category="petarde">
                 <div class="video-container">
-                    <!-- Zamenjen video sa testom Shock petardi -->
                     <iframe src="https://www.youtube.com/embed/zT6fdepSdPU" title="Petarde video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
@@ -544,7 +565,6 @@
 
             <div class="product-item" data-category="vulkani">
                 <div class="video-container">
-                    <!-- Zamenjen video sa prezentacijom Triplex Etna vulkana -->
                     <iframe src="https://www.youtube.com/embed/x-c9pvqW8hE" title="Vulkan video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
@@ -560,7 +580,6 @@
 
             <div class="product-item" data-category="dimovi">
                 <div class="video-container">
-                    <!-- Zamenjen video sa testom plave dimne bombe -->
                     <iframe src="https://www.youtube.com/embed/SKufG_6TYyg" title="Dim video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
@@ -670,7 +689,8 @@
             const buttons = document.querySelectorAll('.filter-btn');
             
             buttons.forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + category).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + category);
+            if(activeBtn) activeBtn.classList.add('active');
             
             items.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
