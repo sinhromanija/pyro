@@ -66,7 +66,7 @@
             color: var(--pyro-orange);
         }
 
-        /* Hero / Glavni Baner sa uklopljenom pozadinom zlatnog vatrometa */
+        /* Hero / Glavni Baner */
         .hero {
             position: relative;
             height: 65vh;
@@ -368,6 +368,47 @@
             font-size: 14px;
             color: var(--text-gray);
         }
+
+        /* RESPONSIVE DIZAJN ZA TELEFONE - OVO JE DODATO */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 15px;
+            }
+
+            .hero {
+                height: auto;
+                padding: 60px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px; /* Smanjen naslov za mobilne ekrane */
+                letter-spacing: 1px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .contact-container {
+                padding: 25px 15px;
+            }
+
+            .contact-link {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -471,7 +512,8 @@
 
             <div class="product-item" data-category="boks-vatrometi">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vatromet video" allowfullscreen></iframe>
+                    <!-- Zamenjen video sa testom boks vatrometa od 36 pucnjeva -->
+                    <iframe src="https://www.youtube.com/embed/RyjaZlyj5-4" title="Vatromet video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
                     <span class="product-category-tag">Boks Vatrometi</span>
@@ -486,7 +528,8 @@
 
             <div class="product-item" data-category="petarde">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Petarde video" allowfullscreen></iframe>
+                    <!-- Zamenjen video sa testom Shock petardi -->
+                    <iframe src="https://www.youtube.com/embed/zT6fdepSdPU" title="Petarde video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
                     <span class="product-category-tag">Petarde</span>
@@ -501,7 +544,8 @@
 
             <div class="product-item" data-category="vulkani">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vulkan video" allowfullscreen></iframe>
+                    <!-- Zamenjen video sa prezentacijom Triplex Etna vulkana -->
+                    <iframe src="https://www.youtube.com/embed/x-c9pvqW8hE" title="Vulkan video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
                     <span class="product-category-tag">Vulkani</span>
@@ -516,7 +560,8 @@
 
             <div class="product-item" data-category="dimovi">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Dim video" allowfullscreen></iframe>
+                    <!-- Zamenjen video sa testom plave dimne bombe -->
+                    <iframe src="https://www.youtube.com/embed/SKufG_6TYyg" title="Dim video" allowfullscreen></iframe>
                 </div>
                 <div class="product-details">
                     <span class="product-category-tag">Dimovi</span>
@@ -641,7 +686,6 @@
             document.getElementById('proizvodi').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // WhatsApp naručivanje sa tvojim brojem +381668181848
         function orderViaWhatsApp(productName, productPrice) {
             const myPhoneNumber = "381668181848"; 
             
