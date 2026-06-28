@@ -29,36 +29,45 @@
             line-height: 1.6;
         }
 
-        /* Navigacija / Header sa Logotipom */
+        /* Unapređen Navigacioni Meni / Zaglavlje */
         header {
-            background-color: rgba(18, 18, 18, 0.95);
-            padding: 10px 10%;
+            background-color: rgba(18, 18, 18, 0.98);
+            backdrop-filter: blur(10px); /* Moderni efekat zamućenja u pozadini */
+            padding: 15px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--pyro-orange);
+            border-bottom: 3px solid var(--pyro-orange);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
             text-decoration: none;
+            padding: 5px 0;
         }
 
         .logo-img {
-            height: 60px; /* Optimalna visina za zaglavlje */
+            height: 75px; /* Povećana visina da logo dođe do izražaja */
             width: auto;
-            border-radius: 50%; /* Drži okrugli oblik slike */
-            object-fit: cover;
-            border: 2px solid var(--pyro-orange);
-            transition: transform 0.3s ease;
+            border-radius: 8px; /* Blago zaobljene ivice umesto punog kruga (bolje za tekst/detalje u logou) */
+            object-fit: contain; /* Osigurava da se slika ne deformiše i ne seče */
+            border: 2px solid rgba(255, 81, 0, 0.7);
+            background-color: #1a1a1a; /* Pozadina ako logo ima providne delove */
+            padding: 4px; /* Prostor između ivice slike i okvira */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 10px rgba(255, 81, 0, 0.2);
         }
 
+        /* Efekat kada se mišem pređe preko logotipa */
         .logo-container:hover .logo-img {
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(1deg);
+            border-color: var(--text-light);
+            box-shadow: 0 0 20px rgba(255, 81, 0, 0.6);
         }
 
         nav {
@@ -69,13 +78,34 @@
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: 600;
+            margin-left: 25px;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
             transition: color 0.3s;
+        }
+
+        /* Animacija podvlačenja za linkove u meniju */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--pyro-orange);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--pyro-orange);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Hero / Glavni Baner */
@@ -393,14 +423,20 @@
                 text-align: center;
             }
             
+            .logo-img {
+                height: 65px; /* Nešto manji logo na telefonima da ne zauzima ceo ekran */
+            }
+
             nav {
                 justify-content: center;
                 width: 100%;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             nav a {
-                margin: 0 10px;
-                font-size: 15px;
+                margin: 0 5px;
+                font-size: 14px;
             }
 
             .hero {
