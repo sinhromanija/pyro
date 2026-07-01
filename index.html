@@ -35,7 +35,7 @@
             backdrop-filter: blur(10px);
             padding: 10px 10%;
             display: flex;
-            justify-content: space-between; /* Razdvaja linkove levo i logo desno */
+            justify-content: space-between; 
             align-items: center;
             position: sticky;
             top: 0;
@@ -44,7 +44,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
-        /* Linkovi pomereni na levu stranu */
         nav {
             display: flex;
             align-items: center;
@@ -53,7 +52,7 @@
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            margin-right: 25px; /* Razmak između linkova sa desne strane */
+            margin-right: 25px; 
             font-weight: 700;
             font-size: 15px;
             text-transform: uppercase;
@@ -87,50 +86,37 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 12px; /* Optimalan razmak između teksta i okruglog logotipa */
+            gap: 12px; 
             height: 100%;
         }
 
         /* Eksplozivan "Vatromet" Font */
         .logo-text {
-            font-family: 'Impact', 'Arial Black', sans-serif; /* Snažan, oštar i agresivan font */
-            font-size: 28px; /* Blago smanjeno radi bolje elegancije u headeru */
+            font-family: 'Impact', 'Arial Black', sans-serif; 
+            font-size: 28px; 
             font-weight: 900;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            /* Efekat vatre (Gradijent) */
             background: linear-gradient(135deg, #fff 20%, var(--pyro-orange) 60%, var(--pyro-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Sjaj koji asocira na eksploziju i varnice */
             filter: drop-shadow(0 0 6px rgba(255, 81, 0, 0.5));
             transition: all 0.3s ease;
-            white-space: nowrap; /* Sprečava prelamanje teksta firme u dva reda */
+            white-space: nowrap; 
         }
 
-        /* Potpuno uklapanje logotipa */
+        /* POPRAVLJEN STIL ZA LOGO - Prikazuje sliku u originalu */
         .logo-img {
-            height: 65px; /* Kompaktnija visina koja ne širi header previše */
-            width: 65px;  
+            height: 60px; /* Optimalna visina u headeru */
+            width: auto;  /* Automatska širina da se slika ne bi deformisala */
             object-fit: contain;
-            background-color: transparent;
-            border-radius: 50%; /* Obezbeđuje čist oblik ako je slika okrugla */
-            
-            /* Ako slika ima crnu pozadinu, ovo je eliminiše i čini je transparentnom */
-            mix-blend-mode: screen; 
-            
-            /* Invertuje crnu grafiku u belu i dodaje vatreni narandžasti sjaj */
-            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange)); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: none;
-            border: none;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         /* Efekat na hover za ceo desni deo */
         .logo-container:hover .logo-img {
-            transform: scale(1.1) rotate(15deg); /* Prefinjenija rotacija koja ne kvari kompoziciju */
-            /* Na hover sjaj postaje još intenzivniji i belji */
-            filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 1));
+            transform: scale(1.1); /* Blago povećanje na hover bez rotacije koja krivi sliku */
         }
 
         .logo-container:hover .logo-text {
@@ -463,9 +449,7 @@
             }
 
             .logo-img {
-                height: 50px; 
-                width: 50px;
-                filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange));
+                height: 45px; 
             }
 
             nav {
@@ -529,7 +513,7 @@
 
         <a href="#" class="logo-container" onclick="filterCategory('all')">
             <span class="logo-text">Pyro Distribution</span>
-            <img src="logo.png" alt="Pyro Distribution Logo" class="logo-img">
+            <img src="logo.jpg" alt="Pyro Distribution Logo" class="logo-img">
         </a>
     </header>
 
