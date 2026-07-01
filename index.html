@@ -29,13 +29,12 @@
             line-height: 1.6;
         }
 
-        /* Navigacija sa logom na desnoj strani i tekstom */
+        /* Navigacija sa logom na levoj strani i linkovima desno */
         header {
-            background-color: rgba(18, 18, 18, 0.98);
-            backdrop-filter: blur(10px);
+            background-color: #121212; /* Fiksna tamna pozadina za savršeno stapanje logotipa */
             padding: 10px 10%;
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-between; /* Logo levo, linkovi desno */
             align-items: center;
             position: sticky;
             top: 0;
@@ -44,6 +43,59 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
+        /* Kontejner za logo i tekst na levoj strani */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px; /* Optimalan razmak između okruglog logotipa i teksta */
+            height: 100%;
+        }
+
+        /* Potpuno uklapanje logotipa */
+        .logo-img {
+            height: 65px; /* Kompaktnija visina koja ne širi header previše */
+            width: 65px;  
+            object-fit: contain;
+            background-color: transparent;
+            border-radius: 50%; /* Obezbeđuje čist oblik ako je slika okrugla */
+            
+            /* Invertuje crnu grafiku u belu i dodaje vatreni narandžasti sjaj */
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange)); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: none;
+            border: none;
+        }
+
+        /* Eksplozivan "Vatromet" Font */
+        .logo-text {
+            font-family: 'Impact', 'Arial Black', sans-serif; /* Snažan, oštar i agresivan font */
+            font-size: 28px; 
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            /* Efekat vatre (Gradijent) */
+            background: linear-gradient(135deg, #fff 20%, var(--pyro-orange) 60%, var(--pyro-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Sjaj koji asocira na eksploziju i varnice */
+            filter: drop-shadow(0 0 6px rgba(255, 81, 0, 0.5));
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Sprečava prelamanje teksta firme u dva reda */
+        }
+
+        /* Efekat na hover za ceo levi deo (Logo) */
+        .logo-container:hover .logo-img {
+            transform: scale(1.1) rotate(-15deg); /* Prefinjenija rotacija ulevo pošto je logo na levoj strani */
+            filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 1));
+        }
+
+        .logo-container:hover .logo-text {
+            filter: drop-shadow(0 0 12px rgba(255, 81, 0, 0.9));
+            letter-spacing: 2px; 
+        }
+
+        /* Linkovi pomereni na desnu stranu */
         nav {
             display: flex;
             align-items: center;
@@ -52,7 +104,7 @@
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            margin-right: 25px; 
+            margin-left: 25px; /* Razmak između linkova sa leve strane jer se ređaju udesno */
             font-weight: 700;
             font-size: 15px;
             text-transform: uppercase;
@@ -79,49 +131,6 @@
 
         nav a:hover::after {
             width: 100%;
-        }
-
-        /* Kontejner za logo i tekst na desnoj strani */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 12px; 
-            height: 100%;
-        }
-
-        /* Eksplozivan "Vatromet" Font */
-        .logo-text {
-            font-family: 'Impact', 'Arial Black', sans-serif; 
-            font-size: 28px; 
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #fff 20%, var(--pyro-orange) 60%, var(--pyro-red) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 6px rgba(255, 81, 0, 0.5));
-            transition: all 0.3s ease;
-            white-space: nowrap; 
-        }
-
-        /* POPRAVLJEN STIL ZA LOGO - Prikazuje sliku u originalu */
-        .logo-img {
-            height: 60px; /* Optimalna visina u headeru */
-            width: auto;  /* Automatska širina da se slika ne bi deformisala */
-            object-fit: contain;
-            display: block;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Efekat na hover za ceo desni deo */
-        .logo-container:hover .logo-img {
-            transform: scale(1.1); /* Blago povećanje na hover bez rotacije koja krivi sliku */
-        }
-
-        .logo-container:hover .logo-text {
-            filter: drop-shadow(0 0 12px rgba(255, 81, 0, 0.9));
-            letter-spacing: 2px; 
         }
 
         /* Hero / Glavni Baner */
@@ -433,7 +442,7 @@
         /* RESPONSIVE DIZAJN ZA TELEFONE */
         @media (max-width: 768px) {
             header {
-                flex-direction: column-reverse; 
+                flex-direction: column; /* Ređanje odozgo nadole na mobilnom: prvo logo pa onda linkovi */
                 gap: 15px;
                 padding: 15px 5%;
                 text-align: center;
@@ -449,7 +458,9 @@
             }
 
             .logo-img {
-                height: 45px; 
+                height: 50px; 
+                width: 50px;
+                filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange));
             }
 
             nav {
@@ -460,7 +471,7 @@
             }
 
             nav a {
-                margin: 0 5px;
+                margin: 0 10px; /* Centrirani razmaci za mobilne telefone */
                 font-size: 14px;
             }
 
@@ -505,16 +516,16 @@
 <body>
 
     <header>
+        <a href="#" class="logo-container" onclick="filterCategory('all')">
+            <img src="logo.png" alt="Pyro Distribution Logo" class="logo-img">
+            <span class="logo-text">Pyro Distribution</span>
+        </a>
+
         <nav>
             <a href="#" onclick="filterCategory('all')">Početna</a>
             <a href="#proizvodi" onclick="filterCategory('all')">Prodavnica</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
-
-        <a href="#" class="logo-container" onclick="filterCategory('all')">
-            <span class="logo-text">Pyro Distribution</span>
-            <img src="logo.jpg" alt="Pyro Distribution Logo" class="logo-img">
-        </a>
     </header>
 
     <section class="hero">
@@ -738,7 +749,7 @@
             </p>
             
             <div class="contact-info-item">
-                <span>Broj telefona / WhatsApp</span>
+                <span>Broj telefona za pozive</span>
                 <a href="tel:+381668181848" class="contact-link">+381 66 818 1848</a>
             </div>
 
