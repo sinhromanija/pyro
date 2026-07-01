@@ -87,33 +87,40 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 15px; /* Razmak između teksta i okruglog logotipa */
+            gap: 12px; /* Optimalan razmak između teksta i okruglog logotipa */
+            height: 100%;
         }
 
         /* Eksplozivan "Vatromet" Font */
         .logo-text {
             font-family: 'Impact', 'Arial Black', sans-serif; /* Snažan, oštar i agresivan font */
-            font-size: 32px; 
+            font-size: 28px; /* Blago smanjeno radi bolje elegancije u headeru */
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             /* Efekat vatre (Gradijent) */
-            background: linear-gradient(135deg, #fff 10%, var(--pyro-orange) 50%, var(--pyro-red) 100%);
+            background: linear-gradient(135deg, #fff 20%, var(--pyro-orange) 60%, var(--pyro-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             /* Sjaj koji asocira na eksploziju i varnice */
-            filter: drop-shadow(0 0 8px rgba(255, 81, 0, 0.6));
+            filter: drop-shadow(0 0 6px rgba(255, 81, 0, 0.5));
             transition: all 0.3s ease;
+            white-space: nowrap; /* Sprečava prelamanje teksta firme u dva reda */
         }
 
-        /* Rešen problem sa crnim logotipom - prebačen u belu boju i naglašen narandžastim sjajem */
+        /* Potpuno uklapanje logotipa */
         .logo-img {
-            height: 85px; 
-            width: 85px;  
+            height: 65px; /* Kompaktnija visina koja ne širi header previše */
+            width: 65px;  
             object-fit: contain;
             background-color: transparent;
+            border-radius: 50%; /* Obezbeđuje čist oblik ako je slika okrugla */
+            
+            /* Ako slika ima crnu pozadinu, ovo je eliminiše i čini je transparentnom */
+            mix-blend-mode: screen; 
+            
             /* Invertuje crnu grafiku u belu i dodaje vatreni narandžasti sjaj */
-            filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--pyro-orange)); 
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange)); 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: none;
             border: none;
@@ -121,14 +128,14 @@
 
         /* Efekat na hover za ceo desni deo */
         .logo-container:hover .logo-img {
-            transform: scale(1.1) rotate(360deg); 
+            transform: scale(1.1) rotate(15deg); /* Prefinjenija rotacija koja ne kvari kompoziciju */
             /* Na hover sjaj postaje još intenzivniji i belji */
-            filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(255, 255, 255, 1));
+            filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 1));
         }
 
         .logo-container:hover .logo-text {
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
-            letter-spacing: 3px; 
+            filter: drop-shadow(0 0 12px rgba(255, 81, 0, 0.9));
+            letter-spacing: 2px; 
         }
 
         /* Hero / Glavni Baner */
@@ -448,17 +455,17 @@
             
             .logo-container {
                 justify-content: center;
+                gap: 10px;
             }
 
             .logo-text {
-                font-size: 24px; 
+                font-size: 22px; 
             }
 
             .logo-img {
-                height: 70px; 
-                width: 70px;
-                /* Zadržava se filter belog efekta i na telefonima */
-                filter: brightness(0) invert(1) drop-shadow(0 0 10px var(--pyro-orange));
+                height: 50px; 
+                width: 50px;
+                filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--pyro-orange));
             }
 
             nav {
@@ -522,7 +529,7 @@
 
         <a href="#" class="logo-container" onclick="filterCategory('all')">
             <span class="logo-text">Pyro Distribution</span>
-            <img src="logo.jpg" alt="Pyro Distribution Logo" class="logo-img">
+            <img src="logo.png" alt="Pyro Distribution Logo" class="logo-img">
         </a>
     </header>
 
