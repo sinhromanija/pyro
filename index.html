@@ -628,7 +628,7 @@
                     <p>36 brzih ispaljivanja kalibra 20mm sa svetlucavim repom i masivnim zlatnim crackling finalom na nebu. Trajanje: 40s.</p>
                     <div class="product-meta">
                         <span class="product-price">4.500 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Boks Big Bang 36 Pucnjeva', '4.500 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -643,7 +643,7 @@
                     <p>Snažan zvučni udar sa jakim svetlosnim bljeskom pre same eksplozije. Klasa F2. Pakovanje od 20 komada.</p>
                     <div class="product-meta">
                         <span class="product-price">600 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Petarde Mega Shock 20kom', '600 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -658,7 +658,7 @@
                     <p>Prelepa fontana koja stvara gorući stub od srebrnih iskri. Visina efekta do 3 metra. Trajanje: 50 sekundi.</p>
                     <div class="product-meta">
                         <span class="product-price">1.500 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Vulkan Etna Srebrna Erupcija', '1.500 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -673,7 +673,7 @@
                     <p>Gusti i intenzivni plavi dim, idealan za navijačke koreografije, airsoft i fotografisanje. Trajanje: 60s.</p>
                     <div class="product-meta">
                         <span class="product-price">650 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Dimna Bomba Smoke King', '650 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -688,7 +688,7 @@
                     <p>Profesionalna signalna i navijačka baklja sa jakim i jarkim crvenim plamenom. Otporna na vetar. Trajanje: 60s.</p>
                     <div class="product-meta">
                         <span class="product-price">900 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Navijačka Baklja Pyro Torch Crvena', '900 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -703,7 +703,7 @@
                     <p>Tradicionalna cev koja u pravilnim razmacima ispaljuje 8 svetlosnih projektila visoko u vazduh. Visina do 25m.</p>
                     <div class="product-meta">
                         <span class="product-price">450 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Rimska Sveća Star Hunter 8 pucnjeva', '450 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -718,7 +718,7 @@
                     <p>Specijalna unutrašnja pirotehnika bez dima i mirisa. Stvara srebrni stub iskri visine 2m. Trajanje: 30s.</p>
                     <div class="product-meta">
                         <span class="product-price">1.200 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Hladna Fontana (Za Prvi Ples)', '1.200 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -733,7 +733,7 @@
                     <p>Jedinstven boks sa 25 pucnjeva koji umesto varnica na dnevnom nebu pravi eksplozije gustog dima u raličitim bojama.</p>
                     <div class="product-meta">
                         <span class="product-price">3.900 RSD</span>
-                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="orderViaWhatsApp('Dnevni Boks Color Smoke Curtain', '3.900 RSD')">Poruči</button>
+                        <button class="pyro-btn" style="padding: 8px 15px; font-size: 14px;" onclick="callPhoneNumber()">Pozovi</button>
                     </div>
                 </div>
             </div>
@@ -752,7 +752,7 @@
             
             <div class="contact-info-item">
                 <span>Broj telefona za pozive</span>
-                <a href="tel:+381668181848" class="contact-link">+381 66 818 1848</a>
+                <a href="tel:+381629618232" class="contact-link">+381 62 9618 232</a>
             </div>
 
             <div class="contact-info-item">
@@ -791,17 +791,10 @@
             document.getElementById('proizvodi').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function orderViaWhatsApp(productName, productPrice) {
-            const myPhoneNumber = "381668181848"; 
-            
-            const message = `Zdravo! Želim da poručim sledeći artikal sa Pyro Distribution sajta:\n\n` +
-                            `📦 Proizvod: ${productName}\n` +
-                            `💰 Cena: ${productPrice}\n\n` +
-                            `Molim Vas za informacije o plaćanju i dostavi.`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsAppUrl = `https://wa.me/${myPhoneNumber}?text=${encodedMessage}`;
-            window.open(whatsAppUrl, '_blank');
+        function callPhoneNumber() {
+            // Broj telefona koji je naveden u kontakt sekciji sajta
+            const phoneNumber = "+381629618232";
+            window.location.href = `tel:${phoneNumber}`;
         }
     </script>
 
