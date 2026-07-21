@@ -464,9 +464,9 @@
         /* RESPONSIVE DIZAJN ZA TELEFONE */
         @media (max-width: 768px) {
             header {
-                flex-direction: column; /* Ređanje odozgo nadole na mobilnom: prvo logo pa onda linkovi */
-                gap: 15px;
-                padding: 15px 5%;
+                flex-direction: column; /* Ređanje odozgo nadole: prvo logo pa linkovi */
+                gap: 12px;
+                padding: 12px 5%;
                 text-align: center;
             }
             
@@ -486,15 +486,20 @@
             }
 
             nav {
+                display: flex;
+                flex-direction: row; /* Prikaz u jednom redu za mobilne uređaje */
                 justify-content: center;
+                align-items: center;
                 width: 100%;
-                flex-wrap: wrap;
-                gap: 10px;
+                flex-wrap: nowrap; /* Sprečava prelamanje u novi red */
+                gap: 15px;
             }
 
             nav a {
-                margin: 0 10px; /* Centrirani razmaci za mobilne telefone */
-                font-size: 14px;
+                margin-left: 0; /* Uklanjamo levi margin pošto koristimo gap u flexboxu */
+                font-size: 13px;
+                letter-spacing: 0.5px;
+                white-space: nowrap; /* Garancija da se reči u linkovima ne lome */
             }
 
             .hero {
